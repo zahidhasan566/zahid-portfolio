@@ -1,0 +1,2179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zahid | Portfolio 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Sora:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --blue: #3b82f6;
+            --purple: #8b5cf6;
+            --cyan: #06b6d4;
+            --teal: #14b8a6;
+            --orange: #f97316;
+            --red: #ef4444;
+            --pink: #ec4899;
+            --green: #10b981;
+            --dark: #1e293b;
+            --light: #f8fafc;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: white;
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        /* Sticky Navigation with Show/Hide */
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 50px;
+            padding: 15px 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after,
+        nav a.active::after {
+            width: 100%;
+        }
+        /*nav {*/
+        /*    position: fixed;*/
+        /*    top: 0;*/
+        /*    left: 0;*/
+        /*    right: 0;*/
+        /*    z-index: 1000;*/
+        /*    padding: 20px 50px;*/
+        /*    display: flex;*/
+        /*    justify-content: space-between;*/
+        /*    align-items: center;*/
+        /*    background: rgba(255, 255, 255, 0.95);*/
+        /*    backdrop-filter: blur(20px);*/
+        /*    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);*/
+        /*    transition: transform 0.3s ease, opacity 0.3s ease;*/
+        /*}*/
+
+        /*nav.nav-hidden {*/
+        /*    transform: translateY(-100%);*/
+        /*    opacity: 0;*/
+        /*}*/
+
+        /*nav.nav-visible {*/
+        /*    transform: translateY(0);*/
+        /*    opacity: 1;*/
+        /*    animation: slideDown 0.3s ease;*/
+        /*}*/
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .logo {
+            font-family: 'Sora', sans-serif;
+            font-size: 28px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--blue), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: logoGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes logoGlow {
+            0%, 100% { filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.3)); }
+            50% { filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.5)); }
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-menu a::before {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--blue), var(--purple));
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: var(--blue);
+        }
+
+        .nav-menu a:hover::before,
+        .nav-menu a.active::before {
+            width: 100%;
+        }
+
+        /* Hero Section - Blue/Purple Theme */
+        /* =========================
+   HERO
+   ========================= */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 50px 80px;
+            background: linear-gradient(135deg, #eff6ff 0%, #f3e8ff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.15), transparent);
+            top: -200px;
+            right: -200px;
+            border-radius: 50%;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.15), transparent);
+            bottom: -150px;
+            left: -150px;
+            border-radius: 50%;
+            animation: float 15s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(50px, -50px) scale(1.1); }
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 80px;
+            align-items: center;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content { animation: fadeInLeft 1s ease; }
+
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-60px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 24px;
+            background: white;
+            border: 2px solid rgba(59, 130, 246, 0.3);
+            border-radius: 50px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.15);
+            animation: badgePulse 2s ease-in-out infinite;
+        }
+
+        @keyframes badgePulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 4px 20px rgba(59, 130, 246, 0.15); }
+            50% { transform: scale(1.02); box-shadow: 0 6px 30px rgba(59, 130, 246, 0.25); }
+        }
+
+        .ai-dot {
+            width: 10px;
+            height: 10px;
+            background: var(--blue);
+            border-radius: 50%;
+            animation: pulseDot 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulseDot {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.5); opacity: 0.5; }
+        }
+
+        .hero-content h1 {
+            font-family: 'Sora', sans-serif;
+            font-size: clamp(3rem, 7vw, 6rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--blue) 50%, var(--purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .dynamic-text {
+            font-size: clamp(1.6rem, 4vw, 3rem);
+            font-weight: 300;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .dynamic-text .gradient-text {
+            background: linear-gradient(135deg, var(--blue), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+
+        .hero-description {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #64748b;
+            margin-bottom: 26px;
+            max-width: 680px;
+        }
+
+        /* highlight chips (optional – if you added them) */
+        .hero-highlights{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 18px 0 26px;
+        }
+        .highlight-item{
+            padding: 10px 12px;
+            border-radius: 999px;
+            font-size: 14px;
+            background: rgba(255,255,255,0.70);
+            border: 1px solid rgba(59, 130, 246, 0.18);
+            box-shadow: 0 6px 18px rgba(59,130,246,0.08);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--blue), var(--purple));
+            color: white;
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-primary:hover::before { left: 100%; }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--blue);
+            border: 2px solid var(--blue);
+        }
+
+        .btn-secondary:hover {
+            background: var(--blue);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* =========================
+           HERO SLIDER
+           ========================= */
+        .hero-slider {
+            position: relative;
+            height: 650px;
+        }
+
+        .slider-frame {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            perspective: 2000px;
+        }
+
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+        }
+
+        .slide.active {
+            opacity: 1;
+            z-index: 2;
+        }
+
+        .slide-image-bg {
+            background-size: cover;        /* fills entire slide */
+            background-position: center;   /* centers face */
+            background-repeat: no-repeat;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* ensure card truly fills slide */
+        .slide-card {
+            height: 100%;
+        }
+
+        .slide-top {
+            position: relative;
+            height: 200px;
+            background: linear-gradient(135deg, var(--blue), var(--purple));
+            clip-path: polygon(0 0, 100% 0, 100% 70%, 50% 100%, 0 70%);
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding-top: 40px;
+        }
+
+        .slide-number {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .slide-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 40px 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .slide-content::before {
+            content: '';
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--blue), var(--purple), transparent);
+            border-radius: 2px;
+        }
+
+        /* ✅ Avatar blob + image-fit FIX */
+        .person-avatar {
+            width: 240px;
+            height: 240px;
+            padding: 6px; /* frame thickness */
+            border-radius: 22px;
+            background: linear-gradient(
+                    135deg,
+                    #3b82f6,
+                    #8b5cf6,
+                    #ec4899
+            ); /* gradient frame */
+            box-shadow:
+                    0 25px 60px rgba(59, 130, 246, 0.35),
+                    0 0 0 1px rgba(255,255,255,0.35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .person-avatar::before {
+            content: '';
+            position: absolute;
+            inset: -8px;
+            background: linear-gradient(45deg, var(--blue), var(--purple), var(--pink), var(--blue));
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            z-index: -1;
+            filter: blur(15px);
+            opacity: 0.6;
+        }
+
+        /* ✅ makes your <img> perfectly fit */
+        .person-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 16px;
+            background: white;
+            display: block;
+        }
+        .slide-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--dark);
+        }
+
+        .slide-desc {
+            font-size: 1.1rem;
+            color: #64748b;
+        }
+
+        .slider-nav {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            display: flex;
+            gap: 12px;
+            z-index: 10;
+            transform: translateX(-50%);
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(59, 130, 246, 0.3);
+            cursor: pointer;
+        }
+
+        .slider-dot.active {
+            width: 40px;
+            border-radius: 10px;
+            background: linear-gradient(90deg, var(--blue), var(--purple));
+        }
+
+        /* Section Styles */
+        section {
+            padding: 120px 50px;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-tag {
+            display: inline-block;
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-family: 'Sora', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .section-subtitle {
+            font-size: 1.3rem;
+            color: #64748b;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* AI Features - Cyan/Teal Theme */
+        #ai-features {
+            background: linear-gradient(135deg, #ecfeff 0%, #f0fdfa 100%);
+        }
+
+        #ai-features .section-tag {
+            background: white;
+            color: var(--cyan);
+            border: 2px solid rgba(6, 182, 212, 0.3);
+            box-shadow: 0 4px 20px rgba(6, 182, 212, 0.1);
+        }
+
+        #ai-features .section-title {
+            background: linear-gradient(135deg, var(--dark), var(--cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .features-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: white;
+            border: 2px solid rgba(6, 182, 212, 0.2);
+            border-radius: 25px;
+            padding: 40px;
+            transition: all 0.4s ease;
+            animation: fadeInScale 0.6s ease backwards;
+            box-shadow: 0 4px 20px rgba(6, 182, 212, 0.05);
+        }
+
+        .feature-card:nth-child(1) { animation-delay: 0.1s; }
+        .feature-card:nth-child(2) { animation-delay: 0.2s; }
+        .feature-card:nth-child(3) { animation-delay: 0.3s; }
+        .feature-card:nth-child(4) { animation-delay: 0.4s; }
+        .feature-card:nth-child(5) { animation-delay: 0.5s; }
+        .feature-card:nth-child(6) { animation-delay: 0.6s; }
+
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.9) translateY(20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--cyan);
+            box-shadow: 0 20px 50px rgba(6, 182, 212, 0.2);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--cyan), var(--teal));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            margin-bottom: 25px;
+            animation: iconBounce 2s ease-in-out infinite;
+        }
+
+        @keyframes iconBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .feature-card h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .feature-card p {
+            color: #64748b;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        /* Skills - Orange/Red Theme */
+        #skills {
+            background: linear-gradient(135deg, #fff7ed 0%, #fef2f2 100%);
+        }
+
+        #skills .section-tag {
+            background: white;
+            color: var(--orange);
+            border: 2px solid rgba(249, 115, 22, 0.3);
+            box-shadow: 0 4px 20px rgba(249, 115, 22, 0.1);
+        }
+
+        #skills .section-title {
+            background: linear-gradient(135deg, var(--dark), var(--orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .skills-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .skill-box {
+            background: white;
+            border: 2px solid rgba(249, 115, 22, 0.2);
+            border-radius: 20px;
+            padding: 35px;
+            transition: all 0.4s ease;
+            animation: slideInBottom 0.6s ease backwards;
+            box-shadow: 0 4px 20px rgba(249, 115, 22, 0.05);
+        }
+
+        .skill-box:nth-child(1) { animation-delay: 0.1s; }
+        .skill-box:nth-child(2) { animation-delay: 0.2s; }
+        .skill-box:nth-child(3) { animation-delay: 0.3s; }
+        .skill-box:nth-child(4) { animation-delay: 0.4s; }
+        .skill-box:nth-child(5) { animation-delay: 0.5s; }
+        .skill-box:nth-child(6) { animation-delay: 0.6s; }
+        .skill-box:nth-child(7) { animation-delay: 0.7s; }
+        .skill-box:nth-child(8) { animation-delay: 0.8s; }
+
+        @keyframes slideInBottom {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .skill-box:hover {
+            transform: translateY(-5px) scale(1.02);
+            border-color: var(--orange);
+            box-shadow: 0 15px 40px rgba(249, 115, 22, 0.2);
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .skill-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .skill-percent {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--orange);
+        }
+
+        .skill-bar {
+            height: 10px;
+            background: rgba(249, 115, 22, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .skill-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--orange), var(--red));
+            border-radius: 10px;
+            position: relative;
+            animation: fillSkill 2s ease forwards;
+            box-shadow: 0 0 20px rgba(249, 115, 22, 0.3);
+        }
+
+        @keyframes fillSkill {
+            from { width: 0; }
+        }
+
+        .skill-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+            animation: shimmerSkill 2s infinite;
+        }
+
+        @keyframes shimmerSkill {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* Projects - Purple/Pink Theme */
+        #projects {
+            background: linear-gradient(135deg, #faf5ff 0%, #fce7f3 100%);
+        }
+
+        #projects .section-tag {
+            background: white;
+            color: var(--purple);
+            border: 2px solid rgba(139, 92, 246, 0.3);
+            box-shadow: 0 4px 20px rgba(139, 92, 246, 0.1);
+        }
+
+        #projects .section-title {
+            background: linear-gradient(135deg, var(--dark), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .projects-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 35px;
+        }
+
+        .project-card {
+            background: white;
+            border: 2px solid rgba(139, 92, 246, 0.2);
+            border-radius: 25px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            animation: fadeInScale 0.6s ease backwards;
+            box-shadow: 0 4px 20px rgba(139, 92, 246, 0.05);
+        }
+
+        .project-card:nth-child(1) { animation-delay: 0.1s; }
+        .project-card:nth-child(2) { animation-delay: 0.2s; }
+        .project-card:nth-child(3) { animation-delay: 0.3s; }
+        .project-card:nth-child(4) { animation-delay: 0.4s; }
+        .project-card:nth-child(5) { animation-delay: 0.5s; }
+        .project-card:nth-child(6) { animation-delay: 0.6s; }
+
+        .project-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 60px rgba(139, 92, 246, 0.2);
+            border-color: var(--purple);
+        }
+
+        .project-image {
+            height: 240px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.2) 50%, transparent 70%);
+            background-size: 200% 200%;
+            animation: shimmerProject 3s infinite;
+        }
+
+        @keyframes shimmerProject {
+            0% { background-position: 200% 200%; }
+            100% { background-position: -200% -200%; }
+        }
+
+        .project-emoji {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 100px;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));
+            animation: projectIconFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes projectIconFloat {
+            0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
+            50% { transform: translate(-50%, -55%) rotate(5deg); }
+        }
+
+        .project-info {
+            padding: 35px;
+        }
+
+        .project-info h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .project-info p {
+            color: #64748b;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag {
+            padding: 8px 16px;
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--purple);
+        }
+
+        /* Contact - Green/Blue Theme */
+        #contact {
+            background: linear-gradient(135deg, #f0fdf4 0%, #eff6ff 100%);
+        }
+
+        #contact .section-tag {
+            background: white;
+            color: var(--green);
+            border: 2px solid rgba(16, 185, 129, 0.3);
+            box-shadow: 0 4px 20px rgba(16, 185, 129, 0.1);
+        }
+
+        #contact .section-title {
+            background: linear-gradient(135deg, var(--dark), var(--green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .contact-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .contact-info-section {
+            animation: fadeInLeft 0.8s ease;
+        }
+
+        .contact-info-section h3 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: var(--dark);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 25px;
+            background: white;
+            border: 2px solid rgba(16, 185, 129, 0.2);
+            border-radius: 20px;
+            margin-bottom: 20px;
+            transition: all 0.4s ease;
+            animation: slideInLeft 0.6s ease backwards;
+            box-shadow: 0 4px 20px rgba(16, 185, 129, 0.05);
+        }
+
+        .contact-item:nth-child(1) { animation-delay: 0.1s; }
+        .contact-item:nth-child(2) { animation-delay: 0.2s; }
+        .contact-item:nth-child(3) { animation-delay: 0.3s; }
+        .contact-item:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .contact-item:hover {
+            transform: translateX(10px);
+            border-color: var(--green);
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.15);
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--green), var(--teal));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            flex-shrink: 0;
+        }
+
+        .contact-details strong {
+            display: block;
+            font-size: 1.1rem;
+            color: var(--dark);
+            margin-bottom: 5px;
+        }
+
+        .contact-details span {
+            color: #64748b;
+        }
+
+        .contact-form-section {
+            background: white;
+            border: 2px solid rgba(16, 185, 129, 0.2);
+            border-radius: 25px;
+            padding: 45px;
+            animation: fadeInRight 0.8s ease;
+            box-shadow: 0 4px 20px rgba(16, 185, 129, 0.05);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--dark);
+            font-size: 15px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 16px 20px;
+            background: #f8fafc;
+            border: 2px solid rgba(16, 185, 129, 0.2);
+            border-radius: 12px;
+            color: var(--dark);
+            font-size: 16px;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            background: white;
+            border-color: var(--green);
+            box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* AI Chat */
+        .ai-chat {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+
+        .chat-trigger {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--blue), var(--purple));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 10px 40px rgba(59, 130, 246, 0.4);
+            animation: chatBounce 2s ease-in-out infinite;
+            border: 4px solid white;
+            font-size: 35px;
+        }
+
+        @keyframes chatBounce {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-10px) scale(1.05); }
+        }
+
+        .chat-trigger:hover {
+            animation: none;
+            transform: scale(1.1);
+        }
+
+        .chat-window {
+            position: absolute;
+            bottom: 90px;
+            right: 0;
+            width: 380px;
+            height: 550px;
+            background: white;
+            border-radius: 25px;
+            box-shadow: 0 20px 70px rgba(0, 0, 0, 0.2);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            animation: chatSlideUp 0.4s ease;
+            border: 2px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .chat-window.active {
+            display: flex;
+        }
+
+        @keyframes chatSlideUp {
+            from { opacity: 0; transform: translateY(20px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .chat-header {
+            background: linear-gradient(135deg, var(--blue), var(--purple));
+            padding: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: white;
+        }
+
+        .chat-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            color: var(--blue);
+            font-size: 20px;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 25px;
+            overflow-y: auto;
+            background: #f8fafc;
+        }
+
+        .message {
+            margin-bottom: 20px;
+            animation: messageIn 0.3s ease;
+        }
+
+        @keyframes messageIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .message.ai {
+            display: flex;
+            gap: 12px;
+        }
+
+        .message.user {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .message-bubble {
+            padding: 14px 18px;
+            border-radius: 18px;
+            max-width: 75%;
+            font-size: 14.5px;
+            line-height: 1.6;
+        }
+
+        .message.ai .message-bubble {
+            background: white;
+            border: 2px solid rgba(59, 130, 246, 0.2);
+            color: var(--dark);
+        }
+
+        .message.user .message-bubble {
+            background: linear-gradient(135deg, var(--blue), var(--purple));
+            color: white;
+        }
+
+        .chat-input-area {
+            padding: 20px;
+            border-top: 2px solid #f1f5f9;
+            display: flex;
+            gap: 12px;
+        }
+
+        .chat-input-area input {
+            flex: 1;
+            padding: 14px 18px;
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 25px;
+            color: var(--dark);
+            font-size: 14px;
+        }
+
+        .chat-input-area input:focus {
+            outline: none;
+            border-color: var(--blue);
+        }
+
+        .chat-send {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--blue), var(--purple));
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .chat-send:hover {
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 50px;
+            text-align: center;
+            background: #f8fafc;
+            border-top: 2px solid #e2e8f0;
+        }
+
+        .footer-content p {
+            color: #64748b;
+            font-size: 1.05rem;
+            margin-bottom: 25px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-links a {
+            width: 55px;
+            height: 55px;
+            border-radius: 15px;
+            background: white;
+            border: 2px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background: linear-gradient(135deg, var(--blue), var(--purple));
+            border-color: transparent;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-container,
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .hero-slider {
+                height: 550px;
+            }
+
+            .person-avatar {
+                width: 200px;
+                height: 200px;
+                padding: 5px;
+            }
+
+            nav {
+                padding: 20px 30px;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .person-avatar {
+                width: 170px;
+                height: 170px;
+                padding: 4px;
+            }
+            section {
+                padding: 80px 25px;
+            }
+
+            .features-grid,
+            .projects-grid,
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+
+            .chat-window {
+                width: calc(100vw - 60px);
+                right: -15px;
+            }
+
+            .hero {
+                padding: 100px 25px 60px;
+            }
+            .hero-slider {
+                height: 420px;
+            }
+            nav {
+                padding: 15px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sticky Navigation -->
+    <nav id="navbar">
+<!--        <div class="logo">ZAHID</div>-->
+        <ul class="nav-menu">
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#ai-features">AI Features</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <div class="ai-dot"></div>
+                    <span>Senior Software Engineer • Laravel | Vue.js | SQL Server</span>
+                </div>
+
+                <h1>Hey, I'm <span class="gradient-name">Md Zahid Hasan</span></h1>
+
+                <div class="dynamic-text">
+                    Building <span class="gradient-text" id="typewriter">enterprise web platforms</span>
+                </div>
+
+                <p class="hero-description">
+                    🚀 Senior Software Engineer with experience at <b>ACI</b> and <b>Daraz (Alibaba Group)</b>.
+                    I build scalable ERP & internal systems using Laravel, Vue.js, REST APIs, and optimized databases —
+                    plus cloud & CI/CD for smooth deployments.
+                </p>
+
+                <div class="hero-highlights">
+                    <div class="highlight-item">✅ Laravel / CodeIgniter / PHP</div>
+                    <div class="highlight-item">✅ Vue.js / React / UI Engineering</div>
+                    <div class="highlight-item">✅ SQL Server / MySQL • Performance Tuning</div>
+                    <div class="highlight-item">✅ Docker / Jenkins • Alibaba Cloud / AWS</div>
+                    <div class="highlight-item">✅ Python (NLP, Automation)</div>
+                </div>
+
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn btn-primary">
+                        <span>Let's Connect</span>
+                        <span>→</span>
+                    </a>
+                    <a href="#projects" class="btn btn-secondary">
+                        <span>View Projects</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-slider">
+                <div class="slider-frame">
+
+                    <div class="slide active">
+                        <div class="slide-card slide-image-bg" style="background-image: url('images/zahid.jpeg');">
+                        </div>
+                    </div>
+
+
+                    <div class="slide">
+                        <div class="slide-card">
+                            <div class="slide-top">
+                                <div class="slide-number">🚀</div>
+                            </div>
+                            <div class="slide-content">
+                                <div class="person-avatar avatar-icon">⚙️</div>
+                                <div class="slide-title">DevOps & Delivery</div>
+                                <div class="slide-desc">Docker • Jenkins • Cloud deployments & automation</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="slide">
+                        <div class="slide-card">
+                            <div class="slide-top">
+                                <div class="slide-number">🧠</div>
+                            </div>
+                            <div class="slide-content">
+                                <div class="person-avatar avatar-img">
+                                    <img src="images/zahid.png" alt="Zahid Hasan" />
+                                </div>
+                                <div class="slide-title">Python Automation</div>
+                                <div class="slide-desc">NLP, scraping, and productivity tools for real use-cases</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="slide">
+                        <div class="slide-card">
+                            <div class="slide-top">
+                                <div class="slide-number">🎯</div>
+                            </div>
+                            <div class="slide-content">
+                                <div class="person-avatar avatar-icon">👥</div>
+                                <div class="slide-title">Ownership & Mentoring</div>
+                                <div class="slide-desc">R&D, architecture, and guiding engineering teams</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="slider-nav">
+                    <div class="slider-dot active"></div>
+                    <div class="slider-dot"></div>
+                    <div class="slider-dot"></div>
+                    <div class="slider-dot"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- AI Features -->
+    <section id="ai-features">
+        <div class="section-header">
+            <div class="section-tag">🤖 AI Capabilities</div>
+            <h2 class="section-title">AI-Powered Solutions</h2>
+            <p class="section-subtitle">
+                Leveraging artificial intelligence to build smarter, faster, and more efficient systems
+            </p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🧠</div>
+                <h3>AI Code Assistant</h3>
+                <p>Intelligent code generation and refactoring using ML models, boosting productivity by 40% and reducing bugs</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Predictive Analytics</h3>
+                <p>AI-driven insights and forecasting to make data-informed business decisions with 95% accuracy</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Auto Optimization</h3>
+                <p>Real-time performance tuning using AI to analyze and optimize system efficiency automatically</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🎨</div>
+                <h3>Smart UI Generation</h3>
+                <p>AI-powered design suggestions and automated component creation for rapid development cycles</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🔐</div>
+                <h3>Security AI</h3>
+                <p>Machine learning-based threat detection and automated vulnerability patching for robust security</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">💬</div>
+                <h3>Conversational AI</h3>
+                <p>Intelligent chatbots with NLP for 24/7 customer support and automated query resolution</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+        <div class="section-header">
+            <div class="section-tag">⚡ Expertise</div>
+            <h2 class="section-title">Technical Skills</h2>
+            <p class="section-subtitle">
+                Strong hands-on experience across backend, frontend, databases, and cloud platforms
+            </p>
+        </div>
+
+        <div class="skills-container">
+
+            <div class="skill-box">
+                <div class="skill-header">
+                    <span class="skill-name">Laravel & PHP</span>
+                    <span class="skill-percent">95%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-fill" style="width:95%"></div>
+                </div>
+            </div>
+
+            <div class="skill-box">
+                <div class="skill-header">
+                    <span class="skill-name">Vue.js & JavaScript</span>
+                    <span class="skill-percent">92%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-fill" style="width:92%"></div>
+                </div>
+            </div>
+
+            <div class="skill-box">
+                <div class="skill-header">
+                    <span class="skill-name">React.js</span>
+                    <span class="skill-percent">85%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-fill" style="width:85%"></div>
+                </div>
+            </div>
+
+            <div class="skill-box">
+                <div class="skill-header">
+                    <span class="skill-name">CodeIgniter</span>
+                    <span class="skill-percent">88%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-fill" style="width:88%"></div>
+                </div>
+            </div>
+
+            <div class="skill-box">
+                <div class="skill-header">
+                    <span class="skill-name">REST APIs & MVC Architecture</span>
+                    <span class="skill-percent">93%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-fill" style="width:93%"></div>
+                </div>
+            </div>
+
+            <div class="skill-box">
+                <div class="skill-header">
+                    <span class="skill-name">SQL Server & MySQL</span>
+                    <span class="skill-percent">94%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-fill" style="width:94%"></div>
+                </div>
+            </div>
+
+            <div class="skill-box">
+                <div class="skill-header">
+                    <span class="skill-name">Docker & CI/CD (Git, Jenkins)</span>
+                    <span class="skill-percent">87%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-fill" style="width:87%"></div>
+                </div>
+            </div>
+
+            <div class="skill-box">
+                <div class="skill-header">
+                    <span class="skill-name">Cloud Platforms (Alibaba Cloud, AWS)</span>
+                    <span class="skill-percent">85%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-fill" style="width:85%"></div>
+                </div>
+            </div>
+
+            <div class="skill-box">
+                <div class="skill-header">
+                    <span class="skill-name">Python (NLP, Automation)</span>
+                    <span class="skill-percent">82%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-fill" style="width:82%"></div>
+                </div>
+            </div>
+
+            <div class="skill-box">
+                <div class="skill-header">
+                    <span class="skill-name">WordPress & Customization</span>
+                    <span class="skill-percent">90%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-fill" style="width:90%"></div>
+                </div>
+            </div>
+
+            <div class="skill-box">
+                <div class="skill-header">
+                    <span class="skill-name">HTML5, CSS3, Bootstrap</span>
+                    <span class="skill-percent">93%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-fill" style="width:93%"></div>
+                </div>
+            </div>
+
+            <div class="skill-box">
+                <div class="skill-header">
+                    <span class="skill-name">System Design & Architecture</span>
+                    <span class="skill-percent">90%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-fill" style="width:90%"></div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- Projects -->
+    <section id="projects">
+        <div class="section-header">
+            <div class="section-tag">🚀 Portfolio</div>
+            <h2 class="section-title">Featured Projects</h2>
+            <p class="section-subtitle">
+                Enterprise solutions powering nationwide operations and serving thousands of users
+            </p>
+        </div>
+
+        <div class="projects-grid">
+            <!-- 1 -->
+            <div class="project-card">
+                <div class="project-image" style="background: linear-gradient(135deg,#3b82f6,#2563eb);">
+                    <div class="project-emoji">📦</div>
+                </div>
+                <div class="project-info">
+                    <h3>Daraz Packaging Material System v2</h3>
+                    <p>Enterprise packaging requisition system for Daraz, serving Bangladesh and 4 other countries.</p>
+                    <div class="project-tags">
+                        <span class="tag">Laravel</span>
+                        <span class="tag">REST API</span>
+                        <span class="tag">MySQL</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2 -->
+            <div class="project-card">
+                <div class="project-image" style="background: linear-gradient(135deg,#8b5cf6,#7c3aed);">
+                    <div class="project-emoji">⚙️</div>
+                </div>
+                <div class="project-info">
+                    <h3>CRUD Generator – Laravel Package</h3>
+                    <p>Custom Laravel package published on Packagist to auto-generate CRUD operations.</p>
+                    <div class="project-tags">
+                        <span class="tag">Laravel</span>
+                        <span class="tag">Package</span>
+                        <span class="tag">Packagist</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3 -->
+            <div class="project-card">
+                <div class="project-image" style="background: linear-gradient(135deg,#06b6d4,#0284c7);">
+                    <div class="project-emoji">🔐</div>
+                </div>
+                <div class="project-info">
+                    <h3>Login Information – Laravel Package</h3>
+                    <p>Laravel package to track and store user login information, published on Packagist.</p>
+                    <div class="project-tags">
+                        <span class="tag">Laravel</span>
+                        <span class="tag">Security</span>
+                        <span class="tag">Open Source</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4 -->
+            <div class="project-card">
+                <div class="project-image" style="background: linear-gradient(135deg,#10b981,#059669);">
+                    <div class="project-emoji">📊</div>
+                </div>
+                <div class="project-info">
+                    <h3>SDMS – Sales & Depot Management System</h3>
+                    <p>Enterprise ERP system used across all ACI businesses for sales, depot, and inventory management.</p>
+                    <div class="project-tags">
+                        <span class="tag">Laravel</span>
+                        <span class="tag">Vue.js</span>
+                        <span class="tag">ERP</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5 -->
+            <div class="project-card">
+                <div class="project-image" style="background: linear-gradient(135deg,#f97316,#fb923c);">
+                    <div class="project-emoji">🏢</div>
+                </div>
+                <div class="project-info">
+                    <h3>Dealer Management System (DMS)</h3>
+                    <p>Dealer management platform for ACI Yamaha dealers nationwide covering invoice, stock, and payments.</p>
+                    <div class="project-tags">
+                        <span class="tag">Laravel</span>
+                        <span class="tag">Vue.js</span>
+                        <span class="tag">SQL Server</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6 -->
+            <div class="project-card">
+                <div class="project-image" style="background: linear-gradient(135deg,#ec4899,#db2777);">
+                    <div class="project-emoji">📝</div>
+                </div>
+                <div class="project-info">
+                    <h3>Workplan System</h3>
+                    <p>Doctor requisition and planning system for ACI Pharma built with CodeIgniter.</p>
+                    <div class="project-tags">
+                        <span class="tag">CodeIgniter</span>
+                        <span class="tag">Healthcare</span>
+                        <span class="tag">PHP</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 7 -->
+            <div class="project-card">
+                <div class="project-image" style="background: linear-gradient(135deg,#22c55e,#16a34a);">
+                    <div class="project-emoji">🐄</div>
+                </div>
+                <div class="project-info">
+                    <h3>ACI Livestock Assistant Monitoring</h3>
+                    <p>Monitoring platform for ACI Animal Genetics built with Laravel and Vue.js.</p>
+                    <div class="project-tags">
+                        <span class="tag">Laravel</span>
+                        <span class="tag">Vue.js</span>
+                        <span class="tag">Monitoring</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 8 -->
+            <div class="project-card">
+                <div class="project-image" style="background: linear-gradient(135deg,#0ea5e9,#0369a1);">
+                    <div class="project-emoji">🦐</div>
+                </div>
+                <div class="project-info">
+                    <h3>ACI E-Shrimp</h3>
+                    <p>Web platform for shrimp farmers to manage data and export information to buyers.</p>
+                    <div class="project-tags">
+                        <span class="tag">Laravel</span>
+                        <span class="tag">Vue.js</span>
+                        <span class="tag">AgroTech</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 9 -->
+            <div class="project-card">
+                <div class="project-image" style="background: linear-gradient(135deg,#64748b,#334155);">
+                    <div class="project-emoji">📨</div>
+                </div>
+                <div class="project-info">
+                    <h3>Mailer System</h3>
+                    <p>Bulk email sending system using Alibaba Cloud REST APIs.</p>
+                    <div class="project-tags">
+                        <span class="tag">Laravel</span>
+                        <span class="tag">Alibaba Cloud</span>
+                        <span class="tag">Automation</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 10 -->
+            <div class="project-card">
+                <div class="project-image" style="background: linear-gradient(135deg,#9333ea,#6b21a8);">
+                    <div class="project-emoji">🧠</div>
+                </div>
+                <div class="project-info">
+                    <h3>Daraz Attribute Translation & Transliteration</h3>
+                    <p>Python-based NLP system for bulk product attribute translation for Daraz sellers.</p>
+                    <div class="project-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">NLP</span>
+                        <span class="tag">Automation</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 11 -->
+            <div class="project-card">
+                <div class="project-image" style="background: linear-gradient(135deg,#14b8a6,#0f766e);">
+                    <div class="project-emoji">📋</div>
+                </div>
+                <div class="project-info">
+                    <h3>Project Management System</h3>
+                    <p>Role-based project and task management system with multi-phase workflows.</p>
+                    <div class="project-tags">
+                        <span class="tag">Laravel</span>
+                        <span class="tag">Workflow</span>
+                        <span class="tag">RBAC</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 12 -->
+            <div class="project-card">
+                <div class="project-image" style="background: linear-gradient(135deg,#f59e0b,#d97706);">
+                    <div class="project-emoji">🔗</div>
+                </div>
+                <div class="project-info">
+                    <h3>Daraz Seller Referral & Digital Goods Tracker</h3>
+                    <p>Referral and digital goods tracking system for Daraz sellers.</p>
+                    <div class="project-tags">
+                        <span class="tag">Laravel</span>
+                        <span class="tag">HTML</span>
+                        <span class="tag">Bootstrap</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 13 -->
+            <div class="project-card">
+                <div class="project-image" style="background: linear-gradient(135deg,#0f172a,#020617);">
+                    <div class="project-emoji">🛍️</div>
+                </div>
+                <div class="project-info">
+                    <h3>Locale – Daraz Local Brand</h3>
+                    <p>WordPress website built for promoting Daraz local sellers.</p>
+                    <div class="project-tags">
+                        <span class="tag">WordPress</span>
+                        <span class="tag">CMS</span>
+                        <span class="tag">E-Commerce</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 14 -->
+            <div class="project-card">
+                <div class="project-image" style="background: linear-gradient(135deg,#fb7185,#be123c);">
+                    <div class="project-emoji">🍽️</div>
+                </div>
+                <div class="project-info">
+                    <h3>Metrokebab Restaurant</h3>
+                    <p>Restaurant website built in WordPress for an Australian business.</p>
+                    <div class="project-tags">
+                        <span class="tag">WordPress</span>
+                        <span class="tag">Business Site</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 15 -->
+            <div class="project-card">
+                <div class="project-image" style="background: linear-gradient(135deg,#84cc16,#4d7c0f);">
+                    <div class="project-emoji">🏨</div>
+                </div>
+                <div class="project-info">
+                    <h3>Olde Tudor Hotel & Restaurant</h3>
+                    <p>WordPress website for a five-star hotel and restaurant in Australia.</p>
+                    <div class="project-tags">
+                        <span class="tag">WordPress</span>
+                        <span class="tag">Hospitality</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 16 -->
+            <div class="project-card">
+                <div class="project-image" style="background: linear-gradient(135deg,#38bdf8,#0ea5e9);">
+                    <div class="project-emoji">🏗️</div>
+                </div>
+                <div class="project-info">
+                    <h3>Phoenix Pergolas</h3>
+                    <p>WordPress website for an Australian indoor and outdoor space construction company.</p>
+                    <div class="project-tags">
+                        <span class="tag">WordPress</span>
+                        <span class="tag">Corporate</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 17 -->
+            <div class="project-card">
+                <div class="project-image" style="background: linear-gradient(135deg,#64748b,#1e293b);">
+                    <div class="project-emoji">🎓</div>
+                </div>
+                <div class="project-info">
+                    <h3>University Portal System</h3>
+                    <p>Desktop-based university portal system developed in C#.</p>
+                    <div class="project-tags">
+                        <span class="tag">C#</span>
+                        <span class="tag">Desktop App</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 18 -->
+            <div class="project-card">
+                <div class="project-image" style="background: linear-gradient(135deg,#22d3ee,#0891b2);">
+                    <div class="project-emoji">♿</div>
+                </div>
+                <div class="project-info">
+                    <h3>NDIS Organization Websites</h3>
+                    <p>Multiple WordPress websites developed for Australian NDIS service providers.</p>
+                    <div class="project-tags">
+                        <span class="tag">WordPress</span>
+                        <span class="tag">NDIS</span>
+                        <span class="tag">Australia</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <div class="section-header">
+            <div class="section-tag">💬 Get In Touch</div>
+            <h2 class="section-title">Let's Build Together</h2>
+            <p class="section-subtitle">
+                Ready to discuss your next big idea or explore collaboration opportunities
+            </p>
+        </div>
+
+        <div class="contact-grid">
+            <div class="contact-info-section">
+                <h3>Contact Information</h3>
+                <div class="contact-item">
+                    <div class="contact-icon">📧</div>
+                    <div class="contact-details">
+                        <strong>Email</strong>
+                        <span>jahid1234.jh@gmail.com</span>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">📱</div>
+                    <div class="contact-details">
+                        <strong>Phone</strong>
+                        <span>+880 1974-601166</span>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <div class="contact-details">
+                        <strong>Location</strong>
+                        <span>Dhaka, Bangladesh</span>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">💼</div>
+                    <div class="contact-details">
+                        <strong>Position</strong>
+                        <span>Senior Software Engineer @ ACI Limited</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form-section">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label>Your Name</label>
+                        <input type="text" placeholder="Md Omuk Hasan" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" placeholder="omuk@gmail.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea placeholder="Tell me about your project..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">
+                        <span>Send Message</span>
+                        <span>→</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>© 2026 Zahid </p>
+            <div class="social-links">
+                <a href="#">💻</a>
+                <a href="#">💼</a>
+                <a href="#">🐦</a>
+                <a href="#">📧</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AI Chat -->
+    <div class="ai-chat">
+        <div class="chat-trigger" id="chatTrigger">🤖</div>
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <div class="chat-avatar">AI</div>
+                <div class="chat-header-text">
+                    <h4>AI Assistant</h4>
+                    <p>Always here to help</p>
+                </div>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="message ai">
+                    <div class="message-bubble">
+                        👋 Hi! I'm Zahid's AI assistant. Ask me about his skills, projects, or experience!
+                    </div>
+                </div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="chatInput" placeholder="Type your message...">
+                <button class="chat-send" id="chatSend">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+                        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sticky Header with Show/Hide on Scroll
+        let lastScrollTop = 0;
+        const navbar = document.getElementById('navbar');
+        let scrollTimeout;
+
+        window.addEventListener('scroll', () => {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            clearTimeout(scrollTimeout);
+            
+            scrollTimeout = setTimeout(() => {
+                if (scrollTop > 100) {
+                    if (scrollTop > lastScrollTop) {
+                        // Scrolling down - hide navbar
+                        navbar.classList.add('nav-hidden');
+                        navbar.classList.remove('nav-visible');
+                    } else {
+                        // Scrolling up - show navbar
+                        navbar.classList.remove('nav-hidden');
+                        navbar.classList.add('nav-visible');
+                    }
+                } else {
+                    // At top - always show
+                    navbar.classList.remove('nav-hidden');
+                    navbar.classList.remove('nav-visible');
+                }
+                
+                lastScrollTop = scrollTop;
+            }, 10);
+        });
+
+        // Typewriter effect
+        const words = ['scalable systems', 'AI solutions', 'cloud infrastructure', 'amazing products'];
+        let wordIndex = 0;
+        let charIndex = 0;
+        const typewriterElement = document.getElementById('typewriter');
+
+        function typeWriter() {
+            if (charIndex < words[wordIndex].length) {
+                typewriterElement.textContent += words[wordIndex].charAt(charIndex);
+                charIndex++;
+                setTimeout(typeWriter, 100);
+            } else {
+                setTimeout(deleteText, 2000);
+            }
+        }
+
+        function deleteText() {
+            if (charIndex > 0) {
+                typewriterElement.textContent = words[wordIndex].substring(0, charIndex - 1);
+                charIndex--;
+                setTimeout(deleteText, 50);
+            } else {
+                wordIndex = (wordIndex + 1) % words.length;
+                setTimeout(typeWriter, 500);
+            }
+        }
+
+        setTimeout(typeWriter, 1000);
+
+        // Slider
+        // const slides = document.querySelectorAll('.slide');
+        // const dots = document.querySelectorAll('.slider-dot');
+        // let currentSlide = 0;
+
+        // function showSlide(n) {
+        //     slides.forEach(slide => slide.classList.remove('active'));
+        //     dots.forEach(dot => dot.classList.remove('active'));
+        //
+        //     currentSlide = (n + slides.length) % slides.length;
+        //     slides[currentSlide].classList.add('active');
+        //     dots[currentSlide].classList.add('active');
+        // }
+
+        // dots.forEach((dot, index) => {
+        //     dot.addEventListener('click', () => showSlide(index));
+        // });
+        //
+        // setInterval(() => {
+        //     showSlide(currentSlide + 1);
+        // }, 4000);
+
+        // Chat
+        const chatTrigger = document.getElementById('chatTrigger');
+        const chatWindow = document.getElementById('chatWindow');
+        const chatMessages = document.getElementById('chatMessages');
+        const chatInput = document.getElementById('chatInput');
+        const chatSend = document.getElementById('chatSend');
+
+        chatTrigger.addEventListener('click', () => {
+            chatWindow.classList.toggle('active');
+        });
+
+        const responses = {
+            'skills': '🎯 I specialize in Laravel, Vue.js, Docker, Kubernetes, Python, AI/ML, and DevOps with 5+ years of experience!',
+            'projects': '🚀 Major projects include ACI Dealer Management (200+ outlets), DevOps Infrastructure (99.9% uptime), and AI OCR systems!',
+            'experience': '💼 Senior Software Engineer at ACI Limited with expertise in building enterprise solutions and leading teams!',
+            'contact': '📧 Reach out at jahid1234.jh@gmail.com or use the contact form below!',
+            'ai': '🤖 Yes! I build AI-powered solutions with ML models, automation, and intelligent analytics!',
+            'phone': 'The Number is +880 1974-601166!',
+            'default': '😊 Ask me about skills, projects, experience,phone or how to contact Zahid!'
+        };
+
+        function addChatMessage(text, isUser = false) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${isUser ? 'user' : 'ai'}`;
+            messageDiv.innerHTML = `<div class="message-bubble">${text}</div>`;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function handleChat() {
+            const message = chatInput.value.trim();
+            if (!message) return;
+
+            addChatMessage(message, true);
+            chatInput.value = '';
+
+            setTimeout(() => {
+                const lowerMessage = message.toLowerCase();
+                let response = responses.default;
+                
+                for (let key in responses) {
+                    if (lowerMessage.includes(key)) {
+                        response = responses[key];
+                        break;
+                    }
+                }
+                
+                addChatMessage(response);
+            }, 600);
+        }
+
+        chatSend.addEventListener('click', handleChat);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') handleChat();
+        });
+
+        // Navigation
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-menu a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Form
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('🎉 Thank you! I will get back to you soon.');
+            e.target.reset();
+        });
+    </script>
+</body>
+</html>
