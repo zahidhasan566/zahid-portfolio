@@ -163,6 +163,116 @@
             width: 100%;
         }
 
+        /* ── Hamburger button ── */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 6px;
+            z-index: 1001;
+        }
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2.5px;
+            background: white;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+        .hamburger.open span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+        .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+        .hamburger.open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+
+        /* ── Mobile drawer ── */
+        .mobile-drawer {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: min(300px, 80vw);
+            height: 100vh;
+            background: rgba(15, 23, 42, 0.97);
+            backdrop-filter: blur(20px);
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 0;
+            transition: right 0.35s cubic-bezier(.4,0,.2,1);
+            box-shadow: -10px 0 40px rgba(0,0,0,0.3);
+        }
+        .mobile-drawer.open { right: 0; }
+
+        .drawer-close {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            font-size: 18px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+        .drawer-close:hover { background: rgba(255,255,255,0.2); }
+
+        .drawer-menu {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            padding: 0 30px;
+        }
+        .drawer-menu li { width: 100%; }
+        .drawer-menu a {
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 16px 0;
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 14px;
+            transition: all 0.25s ease;
+            letter-spacing: 0.5px;
+        }
+        .drawer-menu a:hover,
+        .drawer-menu a.active {
+            background: linear-gradient(135deg, var(--blue), var(--purple));
+            color: white;
+            transform: scale(1.03);
+        }
+
+        /* ── Overlay behind drawer ── */
+        .drawer-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.45);
+            z-index: 1999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.35s ease;
+        }
+        .drawer-overlay.open { opacity: 1; pointer-events: all; }
+
+        /* Show hamburger only on mobile */
+        @media (max-width: 1024px) {
+            .hamburger { display: flex; }
+        }
+
         /* Hero Section - Blue/Purple Theme */
         /* =========================
    HERO
@@ -1288,6 +1398,56 @@
             .yamaha-logo-badge, .re-badge { font-size: 10px; padding: 4px 14px; }
         }
 
+        /* ── ySpark card ── */
+        .yspark-bg {
+            background: linear-gradient(135deg, #0f172a, #1e1b4b, #312e81) !important;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .yspark-svg {
+            width: 62%;
+            max-width: 180px;
+            height: auto;
+            z-index: 2;
+            filter: drop-shadow(0 0 18px rgba(139,92,246,0.6));
+            animation: ysparkPulse 3s ease-in-out infinite;
+        }
+        @keyframes ysparkPulse {
+            0%,100% { transform: scale(1);    filter: drop-shadow(0 0 14px rgba(139,92,246,0.5)); }
+            50%      { transform: scale(1.06); filter: drop-shadow(0 0 28px rgba(167,139,250,0.9)); }
+        }
+        .yspark-badge {
+            position: absolute;
+            bottom: 14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(139,92,246,0.25);
+            border: 1px solid rgba(167,139,250,0.5);
+            color: #e9d5ff;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 5px 18px;
+            border-radius: 20px;
+            backdrop-filter: blur(8px);
+            white-space: nowrap;
+            z-index: 3;
+        }
+        .yspark-card:hover {
+            border-color: #7c3aed !important;
+            box-shadow: 0 25px 60px rgba(124,58,237,0.28) !important;
+        }
+        .tag-yspark {
+            background: rgba(124,58,237,0.1) !important;
+            border-color: rgba(124,58,237,0.35) !important;
+            color: #7c3aed !important;
+        }
+
         /* Royal Enfield card extras */
         .re-card .project-image { position: relative; }
         .re-badge {
@@ -1459,15 +1619,32 @@
 <body>
     <!-- Sticky Navigation -->
     <nav id="navbar">
-<!--        <div class="logo">ZAHID</div>-->
         <ul class="nav-menu">
             <li><a href="#home" class="active">Home</a></li>
             <li><a href="#skills">Skills</a></li>
             <li><a href="#projects">Projects</a></li>
-<!--            <li><a href="#ai-features">AI Features</a></li>-->
             <li><a href="#contact">Contact</a></li>
         </ul>
+
+        <!-- Hamburger — only visible on mobile -->
+        <button class="hamburger" id="hamburger" aria-label="Open menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </nav>
+
+    <!-- Mobile drawer -->
+    <div class="mobile-drawer" id="mobileDrawer">
+        <button class="drawer-close" id="drawerClose" aria-label="Close menu">✕</button>
+        <ul class="drawer-menu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+    <div class="drawer-overlay" id="drawerOverlay"></div>
 
     <!-- Hero -->
     <section class="hero" id="home">
@@ -1782,120 +1959,109 @@
             <div class="project-card yamaha-card">
                 <div class="project-image yamaha-bg">
 
-                    <!-- R15 sportbike logo icon (side silhouette) -->
+                    <!-- R15 proper logo silhouette -->
                     <svg class="r15-logo-svg" viewBox="0 0 320 160" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <filter id="bikeGlow" x="-20%" y="-20%" width="140%" height="140%">
+                                <feGaussianBlur stdDeviation="3.5" result="b"/>
+                                <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+                            </filter>
+                        </defs>
 
                         <!-- ── FRONT WHEEL ── -->
-                        <circle cx="72" cy="108" r="32" fill="none" stroke="white" stroke-width="6"/>
-                        <circle cx="72" cy="108" r="14" fill="none" stroke="white" stroke-width="4"/>
-                        <g stroke="white" stroke-width="1.8" opacity="0.55">
-                            <line x1="72" y1="76"  x2="72"  y2="140"/>
-                            <line x1="40" y1="108" x2="104" y2="108"/>
-                            <line x1="49" y1="85"  x2="95"  y2="131"/>
-                            <line x1="49" y1="131" x2="95"  y2="85"/>
-                            <line x1="40" y1="97"  x2="104" y2="119"/>
-                            <line x1="40" y1="119" x2="104" y2="97"/>
+                        <circle cx="70" cy="118" r="30" fill="none" stroke="white" stroke-width="7" opacity="0.95"/>
+                        <circle cx="70" cy="118" r="13" fill="none" stroke="white" stroke-width="4" opacity="0.8"/>
+                        <g stroke="white" stroke-width="2" opacity="0.55">
+                            <line x1="70" y1="88"  x2="70"  y2="148"/>
+                            <line x1="40" y1="118" x2="100" y2="118"/>
+                            <line x1="49" y1="97"  x2="91"  y2="139"/>
+                            <line x1="49" y1="139" x2="91"  y2="97"/>
+                            <line x1="40" y1="107" x2="100" y2="129"/>
+                            <line x1="40" y1="129" x2="100" y2="107"/>
                         </g>
-                        <!-- front brake disc -->
-                        <circle cx="72" cy="108" r="20" fill="none" stroke="white" stroke-width="1.2" opacity="0.35" stroke-dasharray="4 3"/>
 
                         <!-- ── REAR WHEEL ── -->
-                        <circle cx="240" cy="108" r="32" fill="none" stroke="white" stroke-width="6"/>
-                        <circle cx="240" cy="108" r="14" fill="none" stroke="white" stroke-width="4"/>
-                        <g stroke="white" stroke-width="1.8" opacity="0.55">
-                            <line x1="240" y1="76"  x2="240" y2="140"/>
-                            <line x1="208" y1="108" x2="272" y2="108"/>
-                            <line x1="217" y1="85"  x2="263" y2="131"/>
-                            <line x1="217" y1="131" x2="263" y2="85"/>
-                            <line x1="208" y1="97"  x2="272" y2="119"/>
-                            <line x1="208" y1="119" x2="272" y2="97"/>
+                        <circle cx="242" cy="118" r="30" fill="none" stroke="white" stroke-width="7" opacity="0.95"/>
+                        <circle cx="242" cy="118" r="13" fill="none" stroke="white" stroke-width="4" opacity="0.8"/>
+                        <g stroke="white" stroke-width="2" opacity="0.55">
+                            <line x1="242" y1="88"  x2="242" y2="148"/>
+                            <line x1="212" y1="118" x2="272" y2="118"/>
+                            <line x1="221" y1="97"  x2="263" y2="139"/>
+                            <line x1="221" y1="139" x2="263" y2="97"/>
+                            <line x1="212" y1="107" x2="272" y2="129"/>
+                            <line x1="212" y1="129" x2="272" y2="107"/>
                         </g>
-                        <circle cx="240" cy="108" r="20" fill="none" stroke="white" stroke-width="1.2" opacity="0.35" stroke-dasharray="4 3"/>
 
                         <!-- ── FRONT FORK (telescopic) ── -->
-                        <line x1="72"  y1="76" x2="100" y2="46" stroke="white" stroke-width="5" stroke-linecap="round"/>
-                        <line x1="83"  y1="74" x2="109" y2="46" stroke="white" stroke-width="3.5" stroke-linecap="round" opacity="0.65"/>
-                        <!-- fork brace -->
-                        <rect x="98" y="42" width="16" height="7" rx="3.5" fill="white"/>
+                        <line x1="70" y1="88" x2="100" y2="52" stroke="white" stroke-width="5.5" stroke-linecap="round" opacity="0.9"/>
+                        <line x1="80" y1="86" x2="108" y2="52" stroke="white" stroke-width="4"   stroke-linecap="round" opacity="0.55"/>
+                        <rect x="97" y="48" width="16" height="8" rx="4" fill="white" opacity="0.95"/>
 
                         <!-- ── SWING ARM ── -->
-                        <path d="M170,100 Q205,106 240,108" stroke="white" stroke-width="4" fill="none" stroke-linecap="round"/>
-                        <path d="M170,100 Q205,112 240,108" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.4"/>
+                        <path d="M182,108 Q210,114 242,118" stroke="white" stroke-width="4.5" fill="none" stroke-linecap="round" opacity="0.75"/>
+                        <path d="M182,108 Q210,120 242,118" stroke="white" stroke-width="2"   fill="none" stroke-linecap="round" opacity="0.35"/>
 
                         <!-- ── EXHAUST ── -->
-                        <path d="M210,118 Q228,114 258,112" stroke="white" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.8"/>
-                        <!-- exhaust tip -->
-                        <ellipse cx="260" cy="112" rx="6" ry="4" fill="white" opacity="0.7"/>
+                        <path d="M220,128 Q240,124 264,120" stroke="white" stroke-width="6" fill="none" stroke-linecap="round" opacity="0.8"/>
+                        <ellipse cx="266" cy="120" rx="7" ry="4.5" fill="white" opacity="0.7"/>
 
-                        <!-- ── MAIN BODY / FULL FAIRING ── -->
-                        <!-- lower belly pan -->
-                        <path d="M104,76 Q108,88 112,96 L175,96 L175,76 Z" fill="white" opacity="0.5"/>
-                        <!-- main fairing body -->
+                        <!-- ── MAIN FAIRING BODY (solid logo fill) ── -->
                         <path d="
-                            M 100,48
-                            Q 108,26  130,18
-                            L 182,14
-                            Q 215,12  232,26
-                            Q 248,38  245,60
-                            L 238,75
-                            Q 218,68  195,72
-                            L 155,76
-                            L 112,76
-                            Q 102,72  100,60
+                            M 102,56
+                            Q 110,30 134,20
+                            L 184,14
+                            Q 218,10 238,26
+                            Q 254,40 252,64
+                            L 246,80
+                            Q 228,72 202,76
+                            L 150,80
+                            L 108,82
+                            Q 98,78 98,66
                             Z
-                        " fill="white" opacity="0.95"/>
+                        " fill="white" opacity="0.95" filter="url(#bikeGlow)"/>
 
-                        <!-- ── WINDSCREEN / VISOR ── -->
+                        <!-- ── LOWER BELLY PAN ── -->
+                        <path d="M108,80 L108,96 Q130,100 160,100 L182,96 L182,76 L150,80 Z"
+                              fill="white" opacity="0.55"/>
+
+                        <!-- ── WINDSCREEN (blue tint — R15 visor) ── -->
                         <path d="
-                            M 116,34
-                            Q 128,14  152,10
-                            L 182,10
-                            Q 170,16  155,20
-                            Q 138,25  116,34 Z
-                        " fill="rgba(160,210,255,0.55)"/>
+                            M 114,38
+                            Q 128,16 154,12
+                            L 184,12
+                            Q 168,18 150,24
+                            Q 134,30 114,38 Z
+                        " fill="rgba(140,205,255,0.55)"/>
 
                         <!-- ── TAIL / SEAT COWL ── -->
                         <path d="
-                            M 195,72
-                            Q 218,60  240,50
-                            L 248,54
-                            Q 240,64  238,75
-                            L 195,72 Z
-                        " fill="white" opacity="0.7"/>
-                        <!-- rear hump highlight -->
-                        <path d="
-                            M 210,65
-                            Q 228,56  245,50
-                            L 248,54
-                            Q 232,60  212,68 Z
-                        " fill="white" opacity="0.35"/>
+                            M 202,76
+                            Q 226,62 248,54
+                            L 252,64
+                            L 246,80
+                            L 202,76 Z
+                        " fill="white" opacity="0.72"/>
 
-                        <!-- ── HEADLIGHT (dual projector — R15 V4 signature) ── -->
-                        <!-- upper DRL strip -->
-                        <rect x="90" y="47" width="18" height="4" rx="2" fill="rgba(220,240,255,0.95)"/>
-                        <!-- lower projector -->
-                        <ellipse cx="98" cy="58" rx="9" ry="6" fill="rgba(255,245,160,0.92)"/>
-                        <!-- inner lens ring -->
-                        <ellipse cx="98" cy="58" rx="5" ry="3.5" fill="rgba(255,255,255,0.6)"/>
+                        <!-- rear hump ridge highlight -->
+                        <path d="M218,68 Q238,58 250,54 L252,60 Q240,64 220,74 Z"
+                              fill="white" opacity="0.38"/>
 
-                        <!-- ── RIDER SILHOUETTE (racing tuck) ── -->
-                        <!-- helmet -->
-                        <ellipse cx="162" cy="20" rx="16" ry="12" fill="white" opacity="0.3"/>
-                        <!-- visor strip -->
-                        <path d="M148,22 Q162,15 176,22" stroke="rgba(150,210,255,0.6)" stroke-width="3" fill="none"/>
-                        <!-- crouched body -->
-                        <path d="
-                            M 150,30
-                            Q 144,50  150,72
-                            L 178,72
-                            Q 182,52  174,32
-                            Q 168,22  162,20
-                            Q 156,20  150,30 Z
-                        " fill="white" opacity="0.2"/>
+                        <!-- ── DUAL PROJECTOR HEADLIGHT (R15 V4 signature) ── -->
+                        <!-- upper DRL bar -->
+                        <rect x="90" y="54" width="18" height="4" rx="2" fill="rgba(210,235,255,0.95)"/>
+                        <!-- main projector -->
+                        <ellipse cx="99" cy="66" rx="10" ry="7"   fill="rgba(255,248,160,0.95)"/>
+                        <ellipse cx="99" cy="66" rx="5.5" ry="4"  fill="white" opacity="0.75"/>
 
+                        <!-- ── CROUCHED RIDER ── -->
+                        <ellipse cx="164" cy="20" rx="15" ry="11" fill="white" opacity="0.28"/>
+                        <path d="M148,22 Q164,15 180,22" stroke="rgba(160,220,255,0.6)" stroke-width="3" fill="none"/>
+                        <path d="M152,30 Q146,52 154,78 L178,78 Q182,54 174,32
+                                 Q168,22 164,20 Q158,20 152,30 Z"
+                              fill="white" opacity="0.17"/>
                     </svg>
 
-                    <!-- Badge at bottom — same style as Royal Enfield card -->
+                    <!-- Badge — "Yamaha R15" same style as Royal Enfield -->
                     <div class="yamaha-logo-badge">Yamaha R15</div>
 
                 </div>
@@ -1906,6 +2072,66 @@
                         <span class="tag tag-yamaha">Laravel</span>
                         <span class="tag tag-yamaha">Vue.js</span>
                         <span class="tag tag-yamaha">SQL Server</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5b — ySpark App -->
+            <div class="project-card yspark-card">
+                <div class="project-image yspark-bg">
+
+                    <!-- ySpark icon: bolt + bike wheel -->
+                    <svg class="yspark-svg" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+                        <!-- outer ring -->
+                        <circle cx="80" cy="80" r="68" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="2"/>
+                        <!-- wheel rim -->
+                        <circle cx="80" cy="80" r="55" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="5"/>
+                        <!-- hub -->
+                        <circle cx="80" cy="80" r="14" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.8)" stroke-width="3"/>
+                        <!-- spokes (8) -->
+                        <g stroke="rgba(255,255,255,0.5)" stroke-width="2.2">
+                            <line x1="80" y1="25" x2="80" y2="66"/>
+                            <line x1="80" y1="94" x2="80" y2="135"/>
+                            <line x1="25" y1="80" x2="66" y2="80"/>
+                            <line x1="94" y1="80" x2="135" y2="80"/>
+                            <line x1="41" y1="41" x2="70" y2="70"/>
+                            <line x1="90" y1="90" x2="119" y2="119"/>
+                            <line x1="119" y1="41" x2="90" y2="70"/>
+                            <line x1="70" y1="90" x2="41" y2="119"/>
+                        </g>
+                        <!-- tyre tread dashes -->
+                        <circle cx="80" cy="80" r="55" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="8" stroke-dasharray="6 8"/>
+
+                        <!-- lightning bolt (ySpark brand) -->
+                        <path d="M88,28 L66,82 L82,82 L72,132 L106,72 L88,72 Z"
+                              fill="white" opacity="0.95"
+                              filter="url(#glow)"/>
+                        <defs>
+                            <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+                                <feGaussianBlur stdDeviation="3" result="blur"/>
+                                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                            </filter>
+                        </defs>
+                    </svg>
+
+                    <div class="yspark-badge">ySpark App</div>
+                </div>
+                <div class="project-info">
+                    <h3>ySpark — Digital Solution for Bikes</h3>
+                    <p>
+                        End-to-end digital platform for the two-wheeler ecosystem.
+                        Designed the <strong>solution architecture</strong> and led
+                        <strong>backend engineering</strong> — covering rider profiles,
+                        bike service tracking, parts marketplace, real-time notifications,
+                        and dealer integrations via a clean REST API layer.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag tag-yspark">Laravel</span>
+                        <span class="tag tag-yspark">REST API</span>
+                        <span class="tag tag-yspark">Solution Architect</span>
+                        <span class="tag tag-yspark">Backend</span>
+                        <span class="tag tag-yspark">MySQL</span>
+                        <span class="tag tag-yspark">Mobile App</span>
                     </div>
                 </div>
             </div>
@@ -2258,39 +2484,40 @@
                 <h3 style="font-size:1.5rem;font-weight:700;margin-bottom:8px;color:var(--dark);">Send a Message</h3>
                 <p style="color:#64748b;margin-bottom:28px;font-size:0.95rem;">Fill in the form — it lands straight in my inbox 📬</p>
 
-                <!-- FormSubmit.co delivers the form straight to jahid1234.jh@gmail.com -->
-                <form id="contactForm"
-                      action="https://formsubmit.co/jahid1234.jh@gmail.com"
-                      method="POST">
-
-                    <!-- FormSubmit config -->
-                    <input type="hidden" name="_subject"  value="📩 New Portfolio Contact">
-                    <input type="hidden" name="_captcha"  value="false">
-                    <input type="hidden" name="_template" value="table">
-                    <input type="hidden" name="_autoresponse"
-                           value="Hi! Thanks for reaching out. I'll get back to you soon. — Zahid">
-
+                <form id="contactForm" novalidate>
                     <div class="form-group">
                         <label>Your Name</label>
-                        <input type="text" name="name" placeholder="Md Omuk Hasan" required>
+                        <input type="text" id="cf-name" placeholder="Md Omuk Hasan" required>
                     </div>
                     <div class="form-group">
                         <label>Email Address</label>
-                        <input type="email" name="email" placeholder="omuk@gmail.com" required>
+                        <input type="email" id="cf-email" placeholder="omuk@gmail.com" required>
                     </div>
                     <div class="form-group">
                         <label>Subject</label>
-                        <input type="text" name="subject" placeholder="Project Discussion / Collaboration / Hiring..." required>
+                        <input type="text" id="cf-subject" placeholder="Project Discussion / Collaboration / Hiring..." required>
                     </div>
                     <div class="form-group">
                         <label>Message</label>
-                        <textarea name="message" placeholder="Tell me about your project or idea..." required></textarea>
+                        <textarea id="cf-message" placeholder="Tell me about your project or idea..." required></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary" id="sendBtn" style="width:100%;">
                         <span>Send Message</span>
                         <span>→</span>
                     </button>
                 </form>
+
+                <!-- Toast notification -->
+                <div id="form-toast" style="
+                    display:none;
+                    margin-top:18px;
+                    padding:16px 22px;
+                    border-radius:14px;
+                    font-weight:600;
+                    font-size:15px;
+                    text-align:center;
+                    animation: fadeInUp 0.4s ease;
+                "></div>
             </div>
         </div>
     </section>
@@ -2338,7 +2565,37 @@
     </div>
 
     <script>
-        // Sticky Header with Show/Hide on Scroll
+        // ── Mobile drawer ──
+        const hamburger    = document.getElementById('hamburger');
+        const mobileDrawer = document.getElementById('mobileDrawer');
+        const drawerOverlay= document.getElementById('drawerOverlay');
+        const drawerClose  = document.getElementById('drawerClose');
+
+        function openDrawer() {
+            mobileDrawer.classList.add('open');
+            drawerOverlay.classList.add('open');
+            hamburger.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeDrawer() {
+            mobileDrawer.classList.remove('open');
+            drawerOverlay.classList.remove('open');
+            hamburger.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        hamburger.addEventListener('click', () => {
+            mobileDrawer.classList.contains('open') ? closeDrawer() : openDrawer();
+        });
+        drawerClose.addEventListener('click', closeDrawer);
+        drawerOverlay.addEventListener('click', closeDrawer);
+
+        // Close drawer when a menu link is tapped
+        document.querySelectorAll('.drawer-menu a').forEach(link => {
+            link.addEventListener('click', closeDrawer);
+        });
+
+        // ── Sticky Header with Show/Hide on Scroll
         let lastScrollTop = 0;
         const navbar = document.getElementById('navbar');
         let scrollTimeout;
@@ -2509,14 +2766,44 @@
             });
         });
 
-        // Form — submits to FormSubmit.co (real email delivery)
-        document.getElementById('contactForm').addEventListener('submit', (e) => {
-            const btn = document.getElementById('sendBtn');
-            btn.classList.add('btn-sending');
-            btn.innerHTML = '<span>Sending…</span><span>⏳</span>';
-            // FormSubmit handles the POST; page will redirect to their thank-you page
-            // unless you add _next hidden field pointing back here
+        // Contact form — opens visitor's email client with message pre-filled
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name    = document.getElementById('cf-name').value.trim();
+            const email   = document.getElementById('cf-email').value.trim();
+            const subject = document.getElementById('cf-subject').value.trim();
+            const message = document.getElementById('cf-message').value.trim();
+
+            // Basic validation
+            if (!name || !email || !subject || !message) {
+                showToast('Please fill in all fields.', false);
+                return;
+            }
+
+            const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
+            const mailtoURL = `mailto:jahid1234.jh@gmail.com`
+                + `?subject=${encodeURIComponent(subject)}`
+                + `&body=${encodeURIComponent(body)}`;
+
+            window.location.href = mailtoURL;
+
+            // Show success toast after a short delay
+            setTimeout(() => {
+                showToast('✅ Your email client opened! Send the email to reach Zahid.', true);
+                document.getElementById('contactForm').reset();
+            }, 800);
         });
+
+        function showToast(msg, success) {
+            const toast = document.getElementById('form-toast');
+            toast.textContent = msg;
+            toast.style.display = 'block';
+            toast.style.background  = success ? 'rgba(16,185,129,0.12)' : 'rgba(239,68,68,0.1)';
+            toast.style.border      = success ? '2px solid rgba(16,185,129,0.4)' : '2px solid rgba(239,68,68,0.3)';
+            toast.style.color       = success ? '#065f46' : '#991b1b';
+            setTimeout(() => { toast.style.display = 'none'; }, 6000);
+        }
     </script>
 </body>
 </html>
