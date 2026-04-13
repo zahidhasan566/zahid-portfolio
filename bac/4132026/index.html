@@ -1226,116 +1226,6 @@
             box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
         }
 
-        /* ── Yamaha R15 card ── */
-        .yamaha-bg {
-            background: linear-gradient(135deg, #001a6e, #0033a0, #1a5fb4) !important;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .r15-logo-svg {
-            width: 90%;
-            max-width: 300px;
-            height: auto;
-            position: relative;
-            z-index: 2;
-            filter: drop-shadow(0 6px 20px rgba(0,0,0,0.4));
-            animation: r15Float 3.5s ease-in-out infinite;
-        }
-        @keyframes r15Float {
-            0%, 100% { transform: translateY(0px); }
-            50%       { transform: translateY(-8px); }
-        }
-
-        /* Badge — same style as Royal Enfield */
-        .yamaha-logo-badge {
-            position: absolute;
-            bottom: 14px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(255,255,255,0.15);
-            border: 1px solid rgba(255,255,255,0.4);
-            color: #fff;
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            padding: 5px 18px;
-            border-radius: 20px;
-            backdrop-filter: blur(8px);
-            white-space: nowrap;
-            z-index: 3;
-        }
-
-        .yamaha-card:hover {
-            border-color: #0033a0 !important;
-            box-shadow: 0 25px 60px rgba(0,51,160,0.28) !important;
-        }
-        .tag-yamaha {
-            background: rgba(0,51,160,0.1) !important;
-            border-color: rgba(0,51,160,0.35) !important;
-            color: #0033a0 !important;
-        }
-
-        /* ── Mobile: Yamaha & Royal Enfield cards ── */
-        @media (max-width: 640px) {
-            .r15-logo-svg  { width: 85%; max-width: 240px; }
-            .yamaha-logo-badge, .re-badge { font-size: 10px; padding: 4px 14px; }
-        }
-
-        /* Royal Enfield card extras */
-        .re-card .project-image { position: relative; }
-        .re-badge {
-            position: absolute;
-            bottom: 14px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(255,255,255,0.15);
-            border: 1px solid rgba(255,255,255,0.4);
-            color: #fff;
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            padding: 5px 16px;
-            border-radius: 20px;
-            backdrop-filter: blur(8px);
-            white-space: nowrap;
-        }
-        .re-moto { animation: reMotoRev 3s ease-in-out infinite !important; }
-        @keyframes reMotoRev {
-            0%,100% { transform: translate(-50%,-50%) rotate(-3deg); }
-            50%      { transform: translate(-50%,-58%) rotate(3deg); }
-        }
-        .re-card:hover {
-            border-color: #b91c1c !important;
-            box-shadow: 0 25px 60px rgba(185,28,28,0.25) !important;
-        }
-        .tag-re {
-            background: rgba(185,28,28,0.1) !important;
-            border-color: rgba(185,28,28,0.35) !important;
-            color: #b91c1c !important;
-        }
-
-        /* Clickable contact items */
-        .contact-item a {
-            color: #64748b;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        .contact-item a:hover { color: var(--green); }
-
-        /* Form success / loading state */
-        .btn-sending {
-            opacity: 0.75;
-            pointer-events: none;
-        }
-
         /* Responsive */
         @media (max-width: 1024px) {
             .hero-container,
@@ -1373,60 +1263,12 @@
                 padding: 80px 25px;
             }
 
-            /* Single-column grids */
             .features-grid,
+            .projects-grid,
             .skills-container {
                 grid-template-columns: 1fr;
             }
 
-            /* Project cards: remove min-width so they don't overflow on small screens */
-            .projects-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            .project-card {
-                min-width: 0;
-            }
-
-            /* Contact: stack vertically */
-            .contact-grid {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-            .contact-form-section {
-                padding: 28px 20px;
-            }
-            .contact-info-section h3 {
-                font-size: 1.6rem;
-            }
-            .contact-item {
-                padding: 18px;
-                gap: 14px;
-            }
-            .contact-icon {
-                width: 48px;
-                height: 48px;
-                font-size: 22px;
-            }
-
-            /* Form inputs full-width friendly */
-            .form-group input,
-            .form-group textarea {
-                font-size: 15px;
-                padding: 14px 16px;
-            }
-
-            /* Buttons */
-            .cta-buttons {
-                flex-direction: column;
-                gap: 14px;
-            }
-            .btn {
-                width: 100%;
-                justify-content: center;
-            }
-
-            /* Chat window */
             .chat-window {
                 width: calc(100vw - 60px);
                 right: -15px;
@@ -1441,18 +1283,6 @@
             nav {
                 padding: 15px 20px;
             }
-
-            /* Yamaha SVG on very small screens */
-            .r15-logo-svg { max-width: 210px; }
-            .project-image { height: 200px; }
-        }
-
-        /* Extra small (≤ 400px) */
-        @media (max-width: 400px) {
-            .section-title { font-size: 2rem; }
-            .hero-content h1 { font-size: 2.4rem; }
-            .r15-logo-svg { max-width: 180px; }
-            .project-image { height: 180px; }
         }
     </style>
 </head>
@@ -1778,134 +1608,18 @@
                 </div>
             </div>
 
-            <!-- 5 — Yamaha DMS -->
-            <div class="project-card yamaha-card">
-                <div class="project-image yamaha-bg">
-
-                    <!-- R15 sportbike logo icon (side silhouette) -->
-                    <svg class="r15-logo-svg" viewBox="0 0 320 160" xmlns="http://www.w3.org/2000/svg">
-
-                        <!-- ── FRONT WHEEL ── -->
-                        <circle cx="72" cy="108" r="32" fill="none" stroke="white" stroke-width="6"/>
-                        <circle cx="72" cy="108" r="14" fill="none" stroke="white" stroke-width="4"/>
-                        <g stroke="white" stroke-width="1.8" opacity="0.55">
-                            <line x1="72" y1="76"  x2="72"  y2="140"/>
-                            <line x1="40" y1="108" x2="104" y2="108"/>
-                            <line x1="49" y1="85"  x2="95"  y2="131"/>
-                            <line x1="49" y1="131" x2="95"  y2="85"/>
-                            <line x1="40" y1="97"  x2="104" y2="119"/>
-                            <line x1="40" y1="119" x2="104" y2="97"/>
-                        </g>
-                        <!-- front brake disc -->
-                        <circle cx="72" cy="108" r="20" fill="none" stroke="white" stroke-width="1.2" opacity="0.35" stroke-dasharray="4 3"/>
-
-                        <!-- ── REAR WHEEL ── -->
-                        <circle cx="240" cy="108" r="32" fill="none" stroke="white" stroke-width="6"/>
-                        <circle cx="240" cy="108" r="14" fill="none" stroke="white" stroke-width="4"/>
-                        <g stroke="white" stroke-width="1.8" opacity="0.55">
-                            <line x1="240" y1="76"  x2="240" y2="140"/>
-                            <line x1="208" y1="108" x2="272" y2="108"/>
-                            <line x1="217" y1="85"  x2="263" y2="131"/>
-                            <line x1="217" y1="131" x2="263" y2="85"/>
-                            <line x1="208" y1="97"  x2="272" y2="119"/>
-                            <line x1="208" y1="119" x2="272" y2="97"/>
-                        </g>
-                        <circle cx="240" cy="108" r="20" fill="none" stroke="white" stroke-width="1.2" opacity="0.35" stroke-dasharray="4 3"/>
-
-                        <!-- ── FRONT FORK (telescopic) ── -->
-                        <line x1="72"  y1="76" x2="100" y2="46" stroke="white" stroke-width="5" stroke-linecap="round"/>
-                        <line x1="83"  y1="74" x2="109" y2="46" stroke="white" stroke-width="3.5" stroke-linecap="round" opacity="0.65"/>
-                        <!-- fork brace -->
-                        <rect x="98" y="42" width="16" height="7" rx="3.5" fill="white"/>
-
-                        <!-- ── SWING ARM ── -->
-                        <path d="M170,100 Q205,106 240,108" stroke="white" stroke-width="4" fill="none" stroke-linecap="round"/>
-                        <path d="M170,100 Q205,112 240,108" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.4"/>
-
-                        <!-- ── EXHAUST ── -->
-                        <path d="M210,118 Q228,114 258,112" stroke="white" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.8"/>
-                        <!-- exhaust tip -->
-                        <ellipse cx="260" cy="112" rx="6" ry="4" fill="white" opacity="0.7"/>
-
-                        <!-- ── MAIN BODY / FULL FAIRING ── -->
-                        <!-- lower belly pan -->
-                        <path d="M104,76 Q108,88 112,96 L175,96 L175,76 Z" fill="white" opacity="0.5"/>
-                        <!-- main fairing body -->
-                        <path d="
-                            M 100,48
-                            Q 108,26  130,18
-                            L 182,14
-                            Q 215,12  232,26
-                            Q 248,38  245,60
-                            L 238,75
-                            Q 218,68  195,72
-                            L 155,76
-                            L 112,76
-                            Q 102,72  100,60
-                            Z
-                        " fill="white" opacity="0.95"/>
-
-                        <!-- ── WINDSCREEN / VISOR ── -->
-                        <path d="
-                            M 116,34
-                            Q 128,14  152,10
-                            L 182,10
-                            Q 170,16  155,20
-                            Q 138,25  116,34 Z
-                        " fill="rgba(160,210,255,0.55)"/>
-
-                        <!-- ── TAIL / SEAT COWL ── -->
-                        <path d="
-                            M 195,72
-                            Q 218,60  240,50
-                            L 248,54
-                            Q 240,64  238,75
-                            L 195,72 Z
-                        " fill="white" opacity="0.7"/>
-                        <!-- rear hump highlight -->
-                        <path d="
-                            M 210,65
-                            Q 228,56  245,50
-                            L 248,54
-                            Q 232,60  212,68 Z
-                        " fill="white" opacity="0.35"/>
-
-                        <!-- ── HEADLIGHT (dual projector — R15 V4 signature) ── -->
-                        <!-- upper DRL strip -->
-                        <rect x="90" y="47" width="18" height="4" rx="2" fill="rgba(220,240,255,0.95)"/>
-                        <!-- lower projector -->
-                        <ellipse cx="98" cy="58" rx="9" ry="6" fill="rgba(255,245,160,0.92)"/>
-                        <!-- inner lens ring -->
-                        <ellipse cx="98" cy="58" rx="5" ry="3.5" fill="rgba(255,255,255,0.6)"/>
-
-                        <!-- ── RIDER SILHOUETTE (racing tuck) ── -->
-                        <!-- helmet -->
-                        <ellipse cx="162" cy="20" rx="16" ry="12" fill="white" opacity="0.3"/>
-                        <!-- visor strip -->
-                        <path d="M148,22 Q162,15 176,22" stroke="rgba(150,210,255,0.6)" stroke-width="3" fill="none"/>
-                        <!-- crouched body -->
-                        <path d="
-                            M 150,30
-                            Q 144,50  150,72
-                            L 178,72
-                            Q 182,52  174,32
-                            Q 168,22  162,20
-                            Q 156,20  150,30 Z
-                        " fill="white" opacity="0.2"/>
-
-                    </svg>
-
-                    <!-- Badge at bottom — same style as Royal Enfield card -->
-                    <div class="yamaha-logo-badge">Yamaha R15</div>
-
+            <!-- 5 -->
+            <div class="project-card">
+                <div class="project-image" style="background: linear-gradient(135deg,#f97316,#fb923c);">
+                    <div class="project-emoji">🏢</div>
                 </div>
                 <div class="project-info">
-                    <h3>ACI Yamaha — Dealer Management System (DMS)</h3>
+                    <h3>Dealer Management System (DMS)</h3>
                     <p>Dealer management platform for ACI Yamaha dealers nationwide covering invoice, stock, and payments.</p>
                     <div class="project-tags">
-                        <span class="tag tag-yamaha">Laravel</span>
-                        <span class="tag tag-yamaha">Vue.js</span>
-                        <span class="tag tag-yamaha">SQL Server</span>
+                        <span class="tag">Laravel</span>
+                        <span class="tag">Vue.js</span>
+                        <span class="tag">SQL Server</span>
                     </div>
                 </div>
             </div>
@@ -2114,32 +1828,6 @@
                 </div>
             </div>
 
-            <!-- 19 — Royal Enfield DMS -->
-            <div class="project-card re-card">
-                <div class="project-image" style="background: linear-gradient(135deg,#7f1d1d,#b91c1c);">
-                    <div class="project-emoji re-moto">🏍️</div>
-                    <div class="re-badge">Royal Enfield</div>
-                </div>
-                <div class="project-info">
-                    <h3>Royal Enfield — Dealer Management System (DMS)</h3>
-                    <p>
-                        End-to-end dealer management platform built for Royal Enfield dealerships.
-                        Covers <strong>vehicle sales</strong>, <strong>spare-parts inventory</strong>,
-                        <strong>service job-cards</strong>, <strong>PDI (Pre-Delivery Inspection)</strong>,
-                        customer CRM, invoicing &amp; payment tracking, and real-time dealer-wise
-                        performance reports — all under one unified dashboard.
-                    </p>
-                    <div class="project-tags">
-                        <span class="tag tag-re">Laravel</span>
-                        <span class="tag tag-re">Vue.js</span>
-                        <span class="tag tag-re">SQL Server</span>
-                        <span class="tag tag-re">REST API</span>
-                        <span class="tag tag-re">ERP / DMS</span>
-                        <span class="tag tag-re">CRM</span>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </section>
 
@@ -2209,7 +1897,7 @@
                     <div class="contact-icon">📧</div>
                     <div class="contact-details">
                         <strong>Email</strong>
-                        <span><a href="mailto:jahid1234.jh@gmail.com">jahid1234.jh@gmail.com</a></span>
+                        <span>jahid1234.jh@gmail.com</span>
                     </div>
                 </div>
 
@@ -2217,7 +1905,7 @@
                     <div class="contact-icon">📱</div>
                     <div class="contact-details">
                         <strong>Phone</strong>
-                        <span><a href="tel:+8801974601166">+880 1974-601166</a></span>
+                        <span>+880 1974-601166</span>
                     </div>
                 </div>
 
@@ -2236,57 +1924,23 @@
                         <span>Senior Software Engineer @ ACI Limited</span>
                     </div>
                 </div>
-
-                <div class="contact-item">
-                    <div class="contact-icon">🔗</div>
-                    <div class="contact-details">
-                        <strong>LinkedIn</strong>
-                        <span><a href="https://www.linkedin.com/in/zahidhasan566" target="_blank" rel="noopener">linkedin.com/in/zahidhasan566</a></span>
-                    </div>
-                </div>
-
-                <div class="contact-item">
-                    <div class="contact-icon">🐙</div>
-                    <div class="contact-details">
-                        <strong>GitHub</strong>
-                        <span><a href="https://github.com/zahidhasan566" target="_blank" rel="noopener">github.com/zahidhasan566</a></span>
-                    </div>
-                </div>
             </div>
 
             <div class="contact-form-section">
-                <h3 style="font-size:1.5rem;font-weight:700;margin-bottom:8px;color:var(--dark);">Send a Message</h3>
-                <p style="color:#64748b;margin-bottom:28px;font-size:0.95rem;">Fill in the form — it lands straight in my inbox 📬</p>
-
-                <!-- FormSubmit.co delivers the form straight to jahid1234.jh@gmail.com -->
-                <form id="contactForm"
-                      action="https://formsubmit.co/jahid1234.jh@gmail.com"
-                      method="POST">
-
-                    <!-- FormSubmit config -->
-                    <input type="hidden" name="_subject"  value="📩 New Portfolio Contact">
-                    <input type="hidden" name="_captcha"  value="false">
-                    <input type="hidden" name="_template" value="table">
-                    <input type="hidden" name="_autoresponse"
-                           value="Hi! Thanks for reaching out. I'll get back to you soon. — Zahid">
-
+                <form id="contactForm">
                     <div class="form-group">
                         <label>Your Name</label>
-                        <input type="text" name="name" placeholder="Md Omuk Hasan" required>
+                        <input type="text" placeholder="Md Omuk Hasan" required>
                     </div>
                     <div class="form-group">
                         <label>Email Address</label>
-                        <input type="email" name="email" placeholder="omuk@gmail.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Subject</label>
-                        <input type="text" name="subject" placeholder="Project Discussion / Collaboration / Hiring..." required>
+                        <input type="email" placeholder="omuk@gmail.com" required>
                     </div>
                     <div class="form-group">
                         <label>Message</label>
-                        <textarea name="message" placeholder="Tell me about your project or idea..." required></textarea>
+                        <textarea placeholder="Tell me about your project..." required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary" id="sendBtn" style="width:100%;">
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">
                         <span>Send Message</span>
                         <span>→</span>
                     </button>
@@ -2298,12 +1952,12 @@
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <p>© 2026 Md Zahid Hasan &nbsp;·&nbsp; Senior Software Engineer</p>
+            <p>© 2026 Zahid </p>
             <div class="social-links">
-                <a href="https://github.com/zahidhasan566" target="_blank" rel="noopener" title="GitHub">💻</a>
-                <a href="https://www.linkedin.com/in/zahidhasan566" target="_blank" rel="noopener" title="LinkedIn">💼</a>
-                <a href="mailto:jahid1234.jh@gmail.com" title="Email">📧</a>
-                <a href="tel:+8801974601166" title="Phone">📱</a>
+                <a href="#">💻</a>
+                <a href="#">💼</a>
+                <a href="#">🐦</a>
+                <a href="#">📧</a>
             </div>
         </div>
     </footer>
@@ -2509,13 +2163,11 @@
             });
         });
 
-        // Form — submits to FormSubmit.co (real email delivery)
+        // Form
         document.getElementById('contactForm').addEventListener('submit', (e) => {
-            const btn = document.getElementById('sendBtn');
-            btn.classList.add('btn-sending');
-            btn.innerHTML = '<span>Sending…</span><span>⏳</span>';
-            // FormSubmit handles the POST; page will redirect to their thank-you page
-            // unless you add _next hidden field pointing back here
+            e.preventDefault();
+            alert('🎉 Thank you! I will get back to you soon.');
+            e.target.reset();
         });
     </script>
 </body>
