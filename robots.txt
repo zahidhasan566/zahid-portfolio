@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /bac/
+
+Sitemap: https://zahid.live/sitemap.xml
